@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VALID_ARGS=$(getopt -o dll: --long date,logs,logs: -- "$@")
+VALID_ARGS=$(getopt -o dll:h --long date,logs,logs:,help -- "$@")
 if [[ $? -ne 0 ]]; then
     exit 1;
 fi
@@ -25,5 +25,7 @@ do
               done
               break
               ;;
+        -h | --help)
+                echo "Usage:--date displays current date. --logs creates specified number of log files, default is 100. --help displays this message"
     esac
 done
