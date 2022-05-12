@@ -27,5 +27,7 @@ do
               ;;
         -h | --help)
                 echo "Usage:--date displays current date. --logs creates specified number of log files, default is 100. --help displays this message"
+                break
+                ;;
     esac
 done
