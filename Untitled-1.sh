@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VALID_ARGS=$(getopt -o dl --long date,logs -- "$@")
+VALID_ARGS=$(getopt -o dll: --long date,logs,logs: -- "$@")
 if [[ $? -ne 0 ]]; then
     exit 1;
 fi
@@ -14,7 +14,12 @@ do
             break
             ;;
         -l | --logs)
-            for i in {1..100}
+            if [ $# -eq 3 ]; then
+                    COUNT=$3;
+                else
+                    COUNT=100;
+                fi
+            for i in $(seq 1 $COUNT)
                 do
                     echo "log$i.txt, $(basename "$0"), $(date +%m-%d-%Y)" >> log$i.txt
               done
